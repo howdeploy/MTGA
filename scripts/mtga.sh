@@ -8,6 +8,14 @@ export MTGA_PLUGIN_ROOT="${MTGA_PLUGIN_ROOT:-$(dirname "$SCRIPT_DIR")}"
 export MTGA_SETTINGS="${MTGA_SETTINGS:-$HOME/.claude/settings.json}"
 export MTGA_STATE="${MTGA_STATE:-$HOME/.claude/mtga-state.json}"
 
+CMD="${1:-status}"
+
+# Codex integration lives in its own self-contained script
+if [ "$CMD" = "codex" ]; then
+  shift
+  exec bash "$SCRIPT_DIR/mtga-codex.sh" "$@"
+fi
+
 PY=""
 for cand in python3 python; do
   if command -v "$cand" >/dev/null 2>&1; then PY="$cand"; break; fi
@@ -17,7 +25,7 @@ if [ -z "$PY" ]; then
   exit 1
 fi
 
-exec "$PY" - "$@" <<'PYEOF'
+"$PY" - "$@" <<'PYEOF'
 import json
 import os
 import sys
@@ -162,3 +170,8 @@ if changed:
     save(SETTINGS_PATH, settings)
     save(STATE_PATH, state)
 PYEOF
+
+# Full off also cleans up the Codex integration; status reports it too
+if [ "$CMD" = "off" ] || [ "$CMD" = "status" ]; then
+  bash "$SCRIPT_DIR/mtga-codex.sh" "$([ "$CMD" = "off" ] && echo off || echo status)"
+fi

@@ -53,8 +53,19 @@ Then:
 | `/mtga:status` | Show what's on: style, language, commits, spins |
 | `/mtga:commits on\|off` | Trump-style **commit messages** — separate opt-in, off by default |
 | `/mtga:spins on\|off [ru\|en]` | Spinner phrases only, independent from the chat style |
+| `/mtga:codex on\|off [ru\|en]` | Trump style for **OpenAI Codex CLI** — separate toggle |
 
 Style and spinner changes take effect after `/clear` or a new session (Claude Code reads them at session start). The commits flag works immediately.
+
+## Codex CLI
+
+MTGA can install the same communication style into OpenAI Codex CLI:
+
+- `/mtga:codex on [ru|en]` inserts a marked style block into `~/.codex/AGENTS.md` (only the block between `<!-- MTGA:BEGIN -->` and `<!-- MTGA:END -->` is ever touched — the rest of your file stays intact) and installs the `$mtga` skill into `~/.codex/skills/mtga/`.
+- Inside Codex, toggle with `$mtga on|off|status` (Codex skills are invoked with the `$` prefix).
+- `/mtga:codex off` removes both the block and the skill. `/mtga:off` (the full reset) also cleans up the Codex part.
+- Codex picks up `AGENTS.md` changes in a new session.
+- Codex has no spinner mechanism — only the style is installed. Codex commits obey the same `/mtga:commits` flag (via `~/.claude/mtga-state.json`).
 
 ## How it works
 
