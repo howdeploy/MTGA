@@ -12,7 +12,7 @@ Inspired by [MowoGroup/MCGA](https://github.com/MowoGroup/MCGA) (Make Commits Gr
 
 ## What you get
 
-1. **Output styles** (`MTGA` for Russian, `MTGA-EN` for English) — Claude answers, reports, and explains in Trump-tweet style, while file paths, line numbers, test results, and honesty stay fully intact. The style applies ONLY to chat text: code, files, docs, and commands are never touched.
+1. **Output styles** (`MTGA` for Russian, `MTGA-EN` for English) — Claude answers, reports, and explains in Trump-tweet style. Each language includes 90 mirrored contextual phrases covering openings, status updates, results, criticism, blockers, and endings. A rotation rule prevents replies from collapsing into one repeated catchphrase. File paths, line numbers, test results, and honesty stay fully intact. The style applies ONLY to chat text: code, files, docs, and commands are never touched.
 2. **100 spinner phrases** (RU + EN packs) — the status lines at the bottom turn into things like "Building a wall of tests — bugs will pay for it" and "I have concepts of a plan".
 3. **Toggles for everything** — the style, the spins, and Trump-style commits switch on/off independently. Your previous `outputStyle` and `spinnerVerbs` are backed up and restored.
 

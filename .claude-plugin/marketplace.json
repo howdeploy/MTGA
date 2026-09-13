@@ -5,13 +5,13 @@
   },
   "metadata": {
     "description": "MAKE TEXT GREAT AGAIN — Trump-style chat replies for Claude Code",
-    "version": "1.1.0"
+    "version": "1.2.0"
   },
   "plugins": [
     {
       "name": "mtga",
       "source": "./",
-      "description": "Trump-style chat replies: output styles (RU/EN), 100 spinner phrases, separate commit-message toggle",
+      "description": "Trump-style chat replies: contextual phrase banks (RU/EN), 100 spinner phrases, separate commit-message toggle",
       "category": "fun",
       "tags": [
         "trump",
